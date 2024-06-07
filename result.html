@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+        body {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #058c8c;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            background: #606060e1;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 32px;
+            color: #1a1919e1;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #F4DF4EFF;
+            margin-top: 20px;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        li {
+            margin-bottom: 20px;
+        }
+
+        .question {
+            font-size: 18px;
+            color: #F4DF4EFF;
+        }
+
+        .options, .correct-answer {
+            font-size: 16px;
+            color: #1a1919e1;
+            margin-top: 10px;
+        }
+
+        .options ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin-bottom: 5px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                width: 95%;
+                padding: 10px;
+            }
+
+            h1 {
+                font-size: 28px;
+            }
+
+            h2 {
+                font-size: 22px;
+            }
+
+            .question {
+                font-size: 16px;
+            }
+
+            .options, .correct-answer {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Your Score: {{ score }}</h1>
+        <h2>Incorrectly Answered Questions:</h2>
+        <ul>
+            {% for question in incorrect_questions %}
+                <li>
+                    <p class="question"><strong>Question:</strong> {{ question.question }}</p>
+                    <div class="options">
+                        <p><strong>Options:</strong></p>
+                        <ul>
+                            <li>a: {{ question.options.a }}</li>
+                            <li>b: {{ question.options.b }}</li>
+                            <li>c: {{ question.options.c }}</li>
+                            <li>d: {{ question.options.d }}</li>
+                        </ul>
+                    </div>
+                    <p class="correct-answer"><strong>Correct Answer:</strong> {{ question.answer }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
